@@ -1,0 +1,82 @@
+.UserStaffChecks {
+    display: flex;
+    height: calc(100vh - 55px);
+    flex-direction: column;
+    
+  }
+  
+    .UserStaffChecks-title {
+    margin: 10px 0px 0px 15px;
+    }
+
+.StaffCheckCardList {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+    .StaffCheckCard {
+        width: 95%;
+        height: 100px;
+        position: relative;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 5px;
+
+        -webkit-box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.15); 
+        box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.15);
+    }
+
+    .StaffCheckCard-top {
+        width: calc(100% - 10px);
+        height: 21px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .StaffCheckCard-middle {
+        width: calc(100% - 10px);
+        height: 21px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        .StaffCheckCard-middle-right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+            .StaffCheckCard-answer {
+                margin-right: 5px;
+            }
+
+            .StaffCheckCard .right-arrow {
+                width: 15px;
+                height: auto;
+            }
+
+    .StaffCheckCard-bottom {
+        width: calc(100% - 10px);
+        height: 21px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
