@@ -1,18 +1,16 @@
 {
   "files": {
-    "main.css": "/army.github.io/static/css/main.5d50a5a7.css",
-    "main.js": "/army.github.io/static/js/main.2d4dfddf.js",
-    "static/js/787.4c617d16.chunk.js": "/army.github.io/static/js/787.4c617d16.chunk.js",
-    "static/media/logo.png": "/army.github.io/static/media/logo.1bcd1ea3af58c4251922.png",
-    "static/media/profile-icon.png": "/army.github.io/static/media/profile-icon.8ea0bc694b1a7d52856d.png",
+    "main.css": "/army.github.io/static/css/main.f855e6bc.css",
+    "main.js": "/army.github.io/static/js/main.cfc5afeb.js",
+    "static/js/787.1c3a659b.chunk.js": "/army.github.io/static/js/787.1c3a659b.chunk.js",
+    "static/media/logo.svg": "/army.github.io/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/army.github.io/index.html",
-    "static/media/right-arrow.svg": "/army.github.io/static/media/right-arrow.2b7c53f8ae436d1b7dec535f7d1b4ef6.svg",
-    "main.5d50a5a7.css.map": "/army.github.io/static/css/main.5d50a5a7.css.map",
-    "main.2d4dfddf.js.map": "/army.github.io/static/js/main.2d4dfddf.js.map",
-    "787.4c617d16.chunk.js.map": "/army.github.io/static/js/787.4c617d16.chunk.js.map"
+    "main.f855e6bc.css.map": "/army.github.io/static/css/main.f855e6bc.css.map",
+    "main.cfc5afeb.js.map": "/army.github.io/static/js/main.cfc5afeb.js.map",
+    "787.1c3a659b.chunk.js.map": "/army.github.io/static/js/787.1c3a659b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d50a5a7.css",
-    "static/js/main.2d4dfddf.js"
+    "static/css/main.f855e6bc.css",
+    "static/js/main.cfc5afeb.js"
   ]
 }
