@@ -16,17 +16,6 @@ function App() {
         <img className="App-header-profile-icon" src={profileIcon} alt="Profile"/>
       </header>
       <UserStaffChecks />
-      
-      {isMenuOpen && <div className="overlay"></div>}
-
-      <div className={`Mobile-menu ${isMenuOpen ? 'open' : ''}`}>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      
       <AdminInterface />
 
     </div>
