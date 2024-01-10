@@ -1,0 +1,60 @@
+.Mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Changement de 'right' à 'left' */
+    width: 300px;
+    height: 100vh;
+    background: #1a1a1a;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Changement de '-2px' à '2px' */
+    transition: left 0.5s ease-in-out; /* Changement de 'right' à 'left' */
+    font-family: 'Arial', sans-serif;
+}
+
+.Mobile-menu.open {
+    left: 0; /* Changement de 'right' à 'left' */
+}
+
+.Mobile-menu.open::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -300px; /* Position initiale hors de l'écran */
+    width: 300px;
+    height: 55px;
+    background: #14161a;
+    transition: left 0.5s ease-in-out; /* Ajout d'une transition sur 'left' */
+}
+
+.Mobile-menu.open.open::before {
+    left: 0; /* Position finale lorsque le menu est ouvert */
+}
+
+
+.Mobile-menu ul {
+    padding: 20px;
+    line-height: 2;
+    color: #fff;
+    display: flex; /* Ajout de flex pour centrer les éléments */
+    flex-direction: column; /* Orientation en colonne */
+    align-items: center; /* Centrage horizontal */
+    justify-content: center; /* Centrage vertical */
+}
+
+.Mobile-menu ul li {
+    margin: 10px 0;
+    transition: color 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.Mobile-menu ul li:hover {
+    color: #f1c40f; /* Couleur de survol jaune */
+}
+
+.Mobile-menu ul {
+    padding: 20px;
+    line-height: 2;
+    color: #fff;
+    display: flex; /* Ajout de flex pour centrer les éléments */
+    flex-direction: column; /* Orientation en colonne */
+    align-items: center; /* Centrage horizontal */
+    justify-content: center; /* Centrage vertical */
+}
