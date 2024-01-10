@@ -3,6 +3,7 @@ import './styles/App.css';
 import logo from './images/logo.png';
 import profileIcon from './images/profile-icon.png';
 import UserStaffChecks from './userStaffChecks';
+import AdminInterface from './admin';
 
 function App() {
   const [isMenuOpen, setIsOpen] = useState(false);
@@ -30,7 +31,7 @@ function App() {
         </ul>
       </div>
       
-      <UserStaffChecks />
+      <AdminInterface />
 
     </div>
 

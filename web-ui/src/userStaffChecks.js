@@ -13,7 +13,7 @@ function StaffCheckDetails() {
 
 function StaffCheckCards({ setPage }) {
     const list = [
-        {title: "Making bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4}, 
+        {title: "Making bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4},
         {title: "Baking bread", startDate: "02/01/2024", endDate: "02/01/2024", expireDays: 7, location:"Valcartier", answer:"Unavailable", totalAvailable: 1},
     ];
   
