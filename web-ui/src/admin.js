@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-
+import Modal from 'react-modal';
 import './styles/admin.css';
 import notification from './images/notification-alert.svg';
+import add from './images/more.png';
+import AddStaffModal from './AddStaffModal';
 
-function Notification() {
+Modal.setAppElement('#root');
 
-    if (true) {
-        return (
-            <img src={notification} alt="notification" className="notification-alert"></img>
-        )
-    }
-
-    
+function Notification({ notif }) {
+    return (
+        <img src={notification} alt="notification" className="notification-alert" style={{ opacity: notif ? 1 : 0 }} />
+    );
 }
 
 function StaffCheckDetails() {
@@ -31,8 +30,8 @@ function StaffCheckDetails() {
 
 function StaffChecksList({ setPage }) {
     const staffChecksList = [
-        {title: "Making bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4, initUnit: "12 RBC (M)"},
-        {title: "Baking bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4, initUnit: "2 Div CA"}
+        {title: "Making bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4,notif: true, initUnit: "12 RBC (M)"},
+        {title: "Baking bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4,notif: false, initUnit: "2 Div CA"}
     ];
 
     return (
@@ -56,7 +55,7 @@ function StaffChecksList({ setPage }) {
                             <p>Expires in {item.expireDays} days</p>
                         </div>
 
-                        <Notification  />
+                        <Notification notif={item.notif} /> 
                     </div>
                 );
                 })}
@@ -68,22 +67,33 @@ function StaffChecksList({ setPage }) {
 
 function AdminInterface() {
     const [page, setPage] = useState('StaffChecksList');
-
+    const [modalIsOpen, setModalIsOpen] = useState(false);
 
     return (
-        <div className="AdminInterface">
+<div className="AdminInterface">
+    <h2>Staff Dashboard</h2>
 
-            <h2>Staff Dashboard</h2>
-
-            {/* <div className="new-staff-check-form">
-                <label htmlFor="title-input">Title</label>
-                <input type="text" id="title-input" placeholder="Making bread" className="single-line-text-input"/>
-            </div> */}
-
-            {page === 'StaffChecksList' ? <StaffChecksList setPage={setPage} /> : <StaffCheckDetails />}
-
-
-        </div>
+    {page === 'StaffChecksList' ? 
+        <div className="staff-checks-container">
+            <div className="add-button-container">
+                <img 
+                    src={add}
+                    alt="Add" 
+                    className="add-button" 
+                    onClick={() => setModalIsOpen(true)}
+                />
+            </div>
+            <StaffChecksList setPage={setPage} />
+        </div> 
+        : 
+        <StaffCheckDetails />
+    }
+    <AddStaffModal                
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}>
+                {/* Contenu du modal ici */}
+    </AddStaffModal>
+</div>
     ); 
 }
 

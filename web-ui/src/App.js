@@ -15,9 +15,7 @@ function App() {
         <img className="App-header-logo" src={logo} alt="Canadian Army Logo"/>
         <img className="App-header-profile-icon" src={profileIcon} alt="Profile"/>
       </header>
-      <UserStaffChecks />
       <AdminInterface />
-
     </div>
   );
 }

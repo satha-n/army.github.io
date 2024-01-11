@@ -1,0 +1,109 @@
+.AddStaffModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: #f9f9f9; /* Un fond légèrement gris pour être doux pour les yeux */
+    overflow: auto;
+    WebkitOverflowScrolling: touch;
+    border-radius: 10px; /* Des coins arrondis pour un look moderne */
+    outline: none;
+    padding: 20px;
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3); /* Une ombre pour donner de la profondeur */
+    border: none; /* Supprimer la bordure par défaut */
+    font-family: 'Arial', sans-serif; /* Utiliser une police plus attrayante */
+}
+
+.modal-header {
+    position: relative;
+}
+
+.modal-header button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+}
+
+.modal-body {
+    display: flex;
+    height: 78%;
+    flex-direction: row;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    padding: 10px; /* Réduit l'espace autour du contenu */
+    background-color: #f0f0f0; /* Change la couleur de fond */
+}
+
+
+.left-section label {
+    font-size: 1em; /* Réduit la taille de la police des labels */
+    margin-bottom: 5px; /* Réduit l'espace en dessous des labels */
+}
+
+.left-section input,
+.left-section textarea {
+    padding: 5px; /* Réduit l'espace à l'intérieur des inputs et textareas */
+    border: 1px solid #ccc; /* Ajoute une bordure autour des inputs et textareas */
+    border-radius: 4px; /* Arrondit les coins des inputs et textareas */
+    margin-bottom: 10px; /* Réduit l'espace en dessous des inputs et textareas */
+    width: 100%; /* Fait en sorte que les inputs et textareas prennent toute la largeur disponible */
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-left: 1px solid #ccc; /* Ajoute une bordure à droite */
+    padding: 10px; /* Réduit l'espace autour du contenu */
+    background-color: #f0f0f0; /* Change la couleur de fond */
+}
+
+.right-section label {
+    font-size: 1em; /* Réduit la taille de la police des labels */
+    margin-bottom: 5px; /* Réduit l'espace en dessous des labels */
+}
+
+.right-section input,
+.right-section textarea {
+    padding: 5px; /* Réduit l'espace à l'intérieur des inputs et textareas */
+    border: 1px solid #ccc; /* Ajoute une bordure autour des inputs et textareas */
+    border-radius: 4px; /* Arrondit les coins des inputs et textareas */
+    margin-bottom: 10px; /* Réduit l'espace en dessous des inputs et textareas */
+    width: 100%; /* Fait en sorte que les inputs et textareas prennent toute la largeur disponible */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.description {
+    flex-grow: 1;
+}
+
+.send-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4CAF50; /* Couleur de fond du bouton */
+    color: white; /* Couleur du texte du bouton */
+    padding: 15px 32px; /* Espacement intérieur du bouton */
+    text-align: center; /* Alignement du texte du bouton */
+    text-decoration: none; /* Suppression du soulignement du texte du bouton */
+    display: inline-block;
+    font-size: 16px; /* Taille du texte du bouton */
+    margin: 4px 2px; /* Marge autour du bouton */
+    cursor: pointer; /* Change le curseur en une main lorsque vous survolez le bouton */
+    border-radius: 4px; /* Arrondit les coins du bouton */
+}

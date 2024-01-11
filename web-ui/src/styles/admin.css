@@ -95,3 +95,25 @@
         height: auto;
         gap: 10px;
     }
+
+    .staff-checks-container {
+        position: relative;
+        width: 80%;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .add-button-container {
+        width: 100%; /* La même largeur que StaffChecksList */
+        height: 30px; /* Hauteur fixe de 30px */
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .add-button {
+        width: 30px;
+        padding: 15px;
+        cursor: pointer;
+    }
