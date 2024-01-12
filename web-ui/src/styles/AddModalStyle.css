@@ -38,6 +38,7 @@
 .left-section {
     display: flex;
     flex-direction: column;
+    width: 60%;
     padding: 10px; /* Réduit l'espace autour du contenu */
     background-color: #f0f0f0; /* Change la couleur de fond */
 }
@@ -62,14 +63,37 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-left: 1px solid #ccc; /* Ajoute une bordure à droite */
-    padding: 10px; /* Réduit l'espace autour du contenu */
-    background-color: #f0f0f0; /* Change la couleur de fond */
+    border-left: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-section h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .right-section label {
-    font-size: 1em; /* Réduit la taille de la police des labels */
-    margin-bottom: 5px; /* Réduit l'espace en dessous des labels */
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center; /* Aligne le centre du texte avec le centre de la checkbox */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #666;
+}
+
+.right-section label input[type="checkbox"] {
+    order: 2;
+    margin-left: 10px;
+    transform: scale(1.2);
+}
+
+.right-section label span {
+    order: 1;
 }
 
 .right-section input,
@@ -85,7 +109,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 40px;
 }
 
 .description {

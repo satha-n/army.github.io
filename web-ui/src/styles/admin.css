@@ -62,6 +62,11 @@
     height: auto;
 }
 
+.bin {
+    width: 30px;
+    height: auto;
+}
+
 .staff-check-details {
     display: flex;
     flex-direction: row;

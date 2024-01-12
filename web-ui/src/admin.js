@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import './styles/admin.css';
 import notification from './images/notification-alert.svg';
+import bin from './images/bin.png';
 import add from './images/more.png';
 import AddStaffModal from './AddStaffModal';
 
@@ -13,15 +14,27 @@ function Notification({ notif }) {
     );
 }
 
-function StaffCheckDetails() {
+function StaffCheckDetails({ selectedStaff, responses }) {
     return (
         <div className="staff-check-details">
             <div className="staff-check-left">
-
+                <h2>{selectedStaff.title}</h2>
+                <p>Start Date: {selectedStaff.startDate}</p>
+                <p>End Date: {selectedStaff.endDate}</p>
+                <p>Expires in: {selectedStaff.expireDays} days</p>
+                <p>Location: {selectedStaff.location}</p>
+                <p>Answer: {selectedStaff.answer}</p>
+                <p>Total Available: {selectedStaff.totalAvailable}</p>
+                <p>Initial Unit: {selectedStaff.initUnit}</p>
             </div>
-
             <div className="staff-check-right">
-
+                {responses.map((response, index) => (
+                    <div key={index}>
+                        <h3>{response.name}</h3>
+                        <p>Response: {response.positive ? 'Positive' : 'Negative'}</p>
+                        <p>Comment: {response.comment}</p>
+                    </div>
+                ))}
             </div>
         </div>
     );
@@ -29,10 +42,15 @@ function StaffCheckDetails() {
 
 
 function StaffChecksList({ setPage }) {
-    const staffChecksList = [
+    const [staffChecksList, setStaffChecksList] = useState([
         {title: "Making bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4,notif: true, initUnit: "12 RBC (M)"},
         {title: "Baking bread", startDate: "01/01/2024", endDate: "14/01/2024", expireDays: 4, location:"Valcartier", answer:"Available", totalAvailable: 4,notif: false, initUnit: "2 Div CA"}
-    ];
+    ]);
+
+
+    const deleteItem = (index) => {
+        setStaffChecksList(staffChecksList.filter((_, i) => i !== index));
+    };
 
     return (
         <div className="staff-check-list">
@@ -56,6 +74,7 @@ function StaffChecksList({ setPage }) {
                         </div>
 
                         <Notification notif={item.notif} /> 
+                        <img className="bin" src={bin} onClick={(e) => {e.stopPropagation(); deleteItem(index);}} />
                     </div>
                 );
                 })}

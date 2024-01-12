@@ -63,44 +63,43 @@ function AddStaffModal({ isOpen, onRequestClose }) {
                 </div>
                 <div className="right-section">
                     <h3>Chaîne d'approbation</h3>
-                    {/* Répétez ce bloc pour chaque checkbox */}
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Commandant d'unité
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Sergent-Major Régimentaire
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Commandant de niveau 5 (COY)
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Cmdt/A de niveau 5(COY)
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Sergent-Major de niveau 5 (COY)
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Commandant de niveau 6 (PLT)
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Adjoint de niveau 6 (PLT)
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Commandant de niveau 7 (SEC)
                     </label>
                     <label>
                         <input type="checkbox" />
-                        Texte ici
+                        Cmdt/A de niveau 7 (SEC)
                     </label>
-                    <p>Bonjour</p>
+                    <p>La chaîne d'approbation ne peut pas être modifiée</p>
                 </div>
             </div>
             <div className="modal-footer">
