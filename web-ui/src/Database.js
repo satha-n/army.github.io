@@ -216,7 +216,7 @@ const createStaffCheckAnswer = (staffCheckAnswer, callback) => {
 //     MEMBER_MESSAGE: 'Optional, string'
 // };
 const modifyStaffCheckAnswerById = (modifiedStaffCheckAnswer, callback) => {
-    const { STAFF_CHECK_ID, MEMBER_SERVICE_NUMBER, MEMBER_AVAILABILITY, MEMBER_MESSAGE } = staffCheckAnswer;
+    const { STAFF_CHECK_ID, MEMBER_SERVICE_NUMBER, MEMBER_AVAILABILITY, MEMBER_MESSAGE } = modifiedStaffCheckAnswer;
 
     const sql = `UPDATE STAFF_CHECKS_ANSWERS SET 
         ${MEMBER_AVAILABILITY !== null ? "MEMBER_AVAILABILITY = ?," : ""} 
