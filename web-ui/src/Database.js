@@ -99,48 +99,6 @@ const getStaffChecksByUnits = (units, callback) => {
     });
 }
 
-const getStaffChecksAnswersByServiceNumber = (serviceNumber, callback) => {
-    db.all('SELECT * FROM STAFF_CHECKS_ANSWERS WHERE MEMBER_SERVICE_NUMBER = ?', [serviceNumber], function(err, rows) {
-        callback(err, rows);
-    });
-}
-
-const getStaffChecksAnswersByStaffCheckId = (staffCheckId, callback) => {
-    db.all('SELECT * FROM STAFF_CHECKS_ANSWERS WHERE STAFF_CHECK_ID = ?', [staffCheckId], function(err, rows) {
-        callback(err, rows);
-    });
-}
-
-//////////////////////////////
-//////////////////////////////
-// Chats queries
-
-const getChatsByServiceNumber = (serviceNumber, callback) => {
-    db.all('SELECT * FROM CHATS WHERE CHAT_MEMBERS_SERVICE_NUMBERS LIKE ?', [`%${serviceNumber}%`], function(err, rows) {
-        callback(err, rows);
-    });
-}
-
-const getChatAnswersByChatId = (chatId, callback) => {
-    db.all('SELECT * FROM CHATS_ANSWERS WHERE CHAT_ID = ?', [chatId], function(err, rows) {
-        callback(err, rows);
-    });
-}
-
-// System queries
-
-const isUserAdmin = (email, callback) => {
-    db.get('SELECT * FROM SYSTEM_USERS WHERE EMAIL = ?', [email], function(err, row) {
-        callback(err, row);
-  });
-};
-
-
-//////////////////////////////
-//////////////////////////////
-// Create elements
-
-
 // const staffCheck = {
 //     TITLE: 'Required, string',
 //     DESCRIPTION: 'Required, string',
@@ -164,7 +122,135 @@ const createStaffCheck = (staffCheck, callback) => {
     });
 }
 
+// const modifiedStaffCheck = {
+//     STAFF_CHECK_ID: 'Required, integer',
+//     TITLE: 'Optional, string',
+//     DESCRIPTION: 'Optional, string',
+//     START_DATE: 'Optional, date (YYYY-MM-DD)',
+//     END_DATE: 'Optional, date (YYYY-MM-DD)',
+//     EXPIRE_DATE: 'Optional, date (YYYY-MM-DD)',
+//     LOCATION: 'Optional, string',
+//     WANTED_TRADES: 'Optional, comma-separated list of trades',
+//     WANTED_QUALIFICATIONS: 'Optional, comma-separated list of qualifications',
+//     WANTED_RANKS: 'Optional, comma-separated list of ranks',
+//     TARGET_UNITS: 'Optional, comma-separated list of units',
+//     ORG_LEVEL_4_WANTED_RECOMMENDATIONS: 'Optional, comma-separated list of recommendations positions',
+//     STATUS: 'Optional string; Open, Closed'
+// }
+const modifyStaffCheckById = (modifiedStaffCheck, callback) => {
+    const { STAFF_CHECK_ID, TITLE, DESCRIPTION, START_DATE, END_DATE, EXPIRE_DATE, LOCATION, WANTED_TRADES, WANTED_QUALIFICATIONS, WANTED_RANKS, TARGET_UNITS, ORG_LEVEL_4_WANTED_RECOMMENDATIONS, STATUS } = modifiedStaffCheck;
 
+    const sql = `UPDATE STAFF_CHECKS SET 
+        ${TITLE !== null ? "TITLE = ?," : ""} 
+        ${DESCRIPTION !== null ? "DESCRIPTION = ?," : ""} 
+        ${START_DATE !== null ? "START_DATE = ?," : ""} 
+        ${END_DATE !== null ? "END_DATE = ?," : ""} 
+        ${EXPIRE_DATE !== null ? "EXPIRE_DATE = ?," : ""} 
+        ${LOCATION !== null ? "LOCATION = ?," : ""} 
+        ${WANTED_TRADES !== null ? "WANTED_TRADES = ?," : ""} 
+        ${WANTED_QUALIFICATIONS !== null ? "WANTED_QUALIFICATIONS = ?," : ""} 
+        ${WANTED_RANKS !== null ? "WANTED_RANKS = ?," : ""} 
+        ${TARGET_UNITS !== null ? "TARGET_UNITS = ?," : ""} 
+        ${ORG_LEVEL_4_WANTED_RECOMMENDATIONS !== null ? "ORG_LEVEL_4_WANTED_RECOMMENDATIONS = ?," : ""} 
+        ${STATUS !== null ? "STATUS = ?," : ""} 
+        WHERE STAFF_CHECK_ID = ?`;
+
+    const params = [
+        ...(TITLE !== null ? [TITLE] : []), 
+        ...(DESCRIPTION !== null ? [DESCRIPTION] : []), 
+        ...(START_DATE !== null ? [START_DATE] : []), 
+        ...(END_DATE !== null ? [END_DATE] : []), 
+        ...(EXPIRE_DATE !== null ? [EXPIRE_DATE] : []), 
+        ...(LOCATION !== null ? [LOCATION] : []), 
+        ...(WANTED_TRADES !== null ? [WANTED_TRADES] : []), 
+        ...(WANTED_QUALIFICATIONS !== null ? [WANTED_QUALIFICATIONS] : []), 
+        ...(WANTED_RANKS !== null ? [WANTED_RANKS] : []), 
+        ...(TARGET_UNITS !== null ? [TARGET_UNITS] : []), 
+        ...(ORG_LEVEL_4_WANTED_RECOMMENDATIONS !== null ? [ORG_LEVEL_4_WANTED_RECOMMENDATIONS] : []), 
+        ...(STATUS !== null ? [STATUS] : []), 
+        STAFF_CHECK_ID
+    ];
+
+    db.run(sql, params, function(err) {
+        callback(err);
+    });
+}
+
+
+//////////////////////////////
+//////////////////////////////
+// Staff Checks Answers queries
+
+const getStaffChecksAnswersByServiceNumber = (serviceNumber, callback) => {
+    db.all('SELECT * FROM STAFF_CHECKS_ANSWERS WHERE MEMBER_SERVICE_NUMBER = ?', [serviceNumber], function(err, rows) {
+        callback(err, rows);
+    });
+}
+
+const getStaffChecksAnswersByStaffCheckId = (staffCheckId, callback) => {
+    db.all('SELECT * FROM STAFF_CHECKS_ANSWERS WHERE STAFF_CHECK_ID = ?', [staffCheckId], function(err, rows) {
+        callback(err, rows);
+    });
+}
+
+// const staffCheckAnswer = {
+//     STAFF_CHECK_ID: 'Required, integer',
+//     MEMBER_SERVICE_NUMBER: 'Required, string',
+//     MEMBER_LASTNAME: 'Required, string',
+//     MEMBER_AVAILABILITY: 'Required, int; -2 (Non-selected), -1(Unavailable), 0 (Unknown), 1(Available), 2(Selected)',
+//     MEMBER_MESSAGE: 'Optional, string',
+//     CREATED_ON: 'Required, datehour (YYYY-MM-DD HH:MM:SS)'
+// };
+
+const createStaffCheckAnswer = (staffCheckAnswer, callback) => {
+    const { STAFF_CHECK_ID, MEMBER_SERVICE_NUMBER, MEMBER_LASTNAME, MEMBER_AVAILABILITY, MEMBER_MESSAGE, CREATED_ON } = staffCheckAnswer;
+    db.run('INSERT INTO STAFF_CHECKS_ANSWERS (STAFF_CHECK_ID, MEMBER_SERVICE_NUMBER, MEMBER_LASTNAME, MEMBER_AVAILABILITY, MEMBER_MESSAGE, CREATED_ON) VALUES (?, ?, ?, ?, ?, ?)', [STAFF_CHECK_ID, MEMBER_SERVICE_NUMBER, MEMBER_LASTNAME, MEMBER_AVAILABILITY, MEMBER_MESSAGE, CREATED_ON], function(err) {
+        callback(err);
+    });
+}
+
+// const modifiedStaffCheckAnswer = {
+//     STAFF_CHECK_ID: 'Required, integer',
+//     MEMBER_SERVICE_NUMBER: 'Required, string',
+//     MEMBER_AVAILABILITY: 'Optional, int; -2 (Non-selected), -1(Unavailable), 0 (Unknown), 1(Available), 2(Selected)',
+//     MEMBER_MESSAGE: 'Optional, string'
+// };
+const modifyStaffCheckAnswerById = (modifiedStaffCheckAnswer, callback) => {
+    const { STAFF_CHECK_ID, MEMBER_SERVICE_NUMBER, MEMBER_AVAILABILITY, MEMBER_MESSAGE } = staffCheckAnswer;
+
+    const sql = `UPDATE STAFF_CHECKS_ANSWERS SET 
+        ${MEMBER_AVAILABILITY !== null ? "MEMBER_AVAILABILITY = ?," : ""} 
+        ${MEMBER_MESSAGE !== null ? "MEMBER_MESSAGE = ?," : ""} 
+        WHERE STAFF_CHECK_ID = ? AND MEMBER_SERVICE_NUMBER = ?`;
+
+    const params = [
+        ...(MEMBER_AVAILABILITY !== null ? [MEMBER_AVAILABILITY] : []), 
+        ...(MEMBER_MESSAGE !== null ? [MEMBER_MESSAGE] : []), 
+        STAFF_CHECK_ID, 
+        MEMBER_SERVICE_NUMBER
+    ];
+
+    db.run(sql, params, function(err) {
+        callback(err);
+    });
+}
+
+
+//////////////////////////////
+//////////////////////////////
+// Chats queries
+
+const getChatsByServiceNumber = (serviceNumber, callback) => {
+    db.all('SELECT * FROM CHATS WHERE CHAT_MEMBERS_SERVICE_NUMBERS LIKE ?', [`%${serviceNumber}%`], function(err, rows) {
+        callback(err, rows);
+    });
+}
+
+const getChatAnswersByChatId = (chatId, callback) => {
+    db.all('SELECT * FROM CHATS_ANSWERS WHERE CHAT_ID = ?', [chatId], function(err, rows) {
+        callback(err, rows);
+    });
+}
 
 // const chat = {
 //     CHAT_NAME: 'Required, string',
@@ -179,6 +265,21 @@ const createChat = (chat, callback) => {
         callback(err);
     });
 }
+
+// System queries
+
+const isUserAdmin = (email, callback) => {
+    db.get('SELECT * FROM SYSTEM_USERS WHERE EMAIL = ?', [email], function(err, row) {
+        callback(err, row);
+  });
+};
+
+
+
+
+
+
+
 
 
 module.exports = {
@@ -197,6 +298,9 @@ module.exports = {
     getChatsByServiceNumber,
     getChatAnswersByChatId,
     createStaffCheck,
+    modifyStaffCheckById,
+    createStaffCheckAnswer,
+    modifyStaffCheckAnswerById,
     createChat,
     isUserAdmin
 };
