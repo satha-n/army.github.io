@@ -8,14 +8,22 @@ import HamburgerMenu from './HamburgerMenu';
 import AdminInterface from './admin';
 
 function App() {
+
+  const [currentComponent, setCurrentComponent] = useState('StaffChecks');
+
+  const handleItemClick = (componentName) => {
+    setCurrentComponent(componentName);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <HamburgerMenu />
+        <HamburgerMenu onItemClick={handleItemClick} currentComponent={currentComponent} />
         <img className="App-header-logo" src={logo} alt="Canadian Army Logo"/>
         <img className="App-header-profile-icon" src={profileIcon} alt="Profile"/>
       </header>
-      <AdminInterface />
+      {currentComponent === 'StaffChecks' && <UserStaffChecks />}
+      {currentComponent === 'AdminInterface' && <AdminInterface />}
     </div>
   );
 }

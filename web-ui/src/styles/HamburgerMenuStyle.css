@@ -1,60 +1,65 @@
 .Mobile-menu {
     position: fixed;
-    top: 0;
-    left: -300px; /* Changement de 'right' à 'left' */
-    width: 300px;
+    top: 55px;
+    left: -220px; /* Changement de 'right' à 'left' */
+    width: 220px;
     height: 100vh;
-    background: #1a1a1a;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Changement de '-2px' à '2px' */
+    background: #282c34;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3); /* Changement de '-2px' à '2px' */
     transition: left 0.5s ease-in-out; /* Changement de 'right' à 'left' */
     font-family: 'Arial', sans-serif;
+    z-index: 5 !important;
 }
 
 .Mobile-menu.open {
     left: 0; /* Changement de 'right' à 'left' */
-}
-
-.Mobile-menu.open::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -300px; /* Position initiale hors de l'écran */
-    width: 300px;
-    height: 55px;
-    background: #14161a;
-    transition: left 0.5s ease-in-out; /* Ajout d'une transition sur 'left' */
+    z-index: 5 !important;
 }
 
 .Mobile-menu.open.open::before {
     left: 0; /* Position finale lorsque le menu est ouvert */
 }
 
+.overlay {
+    position: fixed;
+    top: 55px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
 
-.Mobile-menu ul {
-    padding: 20px;
+.hamburger-item {
+    height: 30px;
     line-height: 2;
     color: #fff;
-    display: flex; /* Ajout de flex pour centrer les éléments */
-    flex-direction: column; /* Orientation en colonne */
-    align-items: center; /* Centrage horizontal */
-    justify-content: center; /* Centrage vertical */
-}
-
-.Mobile-menu ul li {
-    margin: 10px 0;
+    padding: 10px 0;
     transition: color 0.3s ease; /* Transition pour l'effet de survol */
-}
-
-.Mobile-menu ul li:hover {
-    color: #f1c40f; /* Couleur de survol jaune */
-}
-
-.Mobile-menu ul {
-    padding: 20px;
-    line-height: 2;
-    color: #fff;
     display: flex; /* Ajout de flex pour centrer les éléments */
-    flex-direction: column; /* Orientation en colonne */
+    flex-direction: row; /* Orientation en colonne */
     align-items: center; /* Centrage horizontal */
     justify-content: center; /* Centrage vertical */
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
+
+    .hamburger-icon {
+        margin-right: 10px;
+        filter: invert(100%) sepia(0%) saturate(1%) hue-rotate(248deg) brightness(105%) contrast(101%);
+    }
+
+    .hamburger-icon.active {
+        filter: invert(0%) sepia(0%) saturate(378%) hue-rotate(13deg) brightness(99%) contrast(91%);
+    }
+
+    .hamburger-item:hover {
+        color: #a79329;
+        filter: invert(49%) sepia(79%) saturate(378%) hue-rotate(13deg) brightness(99%) contrast(91%);
+    }
+
+    .hamburger-item.active {
+        background: #a79329;
+        color: black;
+    }
