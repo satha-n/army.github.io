@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-import './styles/admin.css';
+import './styles/Admin.css';
 import notification from './images/notification-alert.svg';
 import bin from './images/bin.png';
 import add from './images/more.png';

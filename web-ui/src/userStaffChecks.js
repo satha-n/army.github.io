@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import './styles/userStaffChecks.css';
+import './styles/UserStaffChecks.css';
 import rightArrow from './images/right-arrow.svg';
 
 function StaffCheckDetails() {
