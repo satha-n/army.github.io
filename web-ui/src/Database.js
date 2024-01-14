@@ -274,14 +274,6 @@ const isUserAdmin = (email, callback) => {
   });
 };
 
-
-
-
-
-
-
-
-
 module.exports = {
     getUserByServiceNumber,
     getUsersByUnits,
